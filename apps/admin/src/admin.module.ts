@@ -5,9 +5,10 @@ import { UserModule } from './user/user.module';
 import { GoodModule } from './good/good.module';
 import { CategoryModule } from './category/category.module';
 import { CommonModule } from 'libs/common/src';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [CommonModule, UserModule, GoodModule, CategoryModule],
+  imports: [CommonModule, UserModule, GoodModule, CategoryModule, AuthModule],
   controllers: [AdminController],
   providers: [AdminService],
 })

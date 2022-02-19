@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import * as bcrypt from 'bcrypt';
 
 @Entity('t_user')
 export class UserEntity {
@@ -11,7 +12,7 @@ export class UserEntity {
   @Column({ type: 'varchar', length: 20, comment: '昵称', default: '' })
   nickName: string;
 
-  @Column({ type: 'varchar', comment: '密码' })
+  @Column({ type: 'varchar', comment: '密码', select: false })
   password: string;
 
   @Column({ type: 'varchar', length: 40, default: '', comment: '地址' })
@@ -22,4 +23,9 @@ export class UserEntity {
 
   @Column({ comment: '头像', default: '' })
   avatar: string;
+
+  @BeforeInsert()
+  async encryptPassword() {
+    this.password = await bcrypt.hashSync(this.password, 10);
+  }
 }
