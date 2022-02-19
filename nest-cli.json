@@ -1,0 +1,48 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/shop-api/src",
+  "monorepo": true,
+  "root": "apps/shop-api",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/shop-api/tsconfig.app.json"
+  },
+  "projects": {
+    "shop-api": {
+      "type": "application",
+      "root": "apps/shop-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/shop-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/shop-api/tsconfig.app.json"
+      }
+    },
+    "admin": {
+      "type": "application",
+      "root": "apps/admin",
+      "entryFile": "main",
+      "sourceRoot": "apps/admin/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/admin/tsconfig.app.json"
+      }
+    },
+    "db": {
+      "type": "library",
+      "root": "libs/db",
+      "entryFile": "index",
+      "sourceRoot": "libs/db/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/db/tsconfig.lib.json"
+      }
+    },
+    "common": {
+      "type": "library",
+      "root": "libs/common",
+      "entryFile": "index",
+      "sourceRoot": "libs/common/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/common/tsconfig.lib.json"
+      }
+    }
+  }
+}
